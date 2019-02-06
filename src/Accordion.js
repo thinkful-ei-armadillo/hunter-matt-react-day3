@@ -5,9 +5,9 @@ class Accordion extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-
-    }
+  }
+  state = {
+    open: null
   }
 
   static defaultProps = {
@@ -29,14 +29,19 @@ class Accordion extends Component {
 
   renderLi() {
     console.log('render li is running');
-    return this.props.sections.map((i, j) => 
-    <li key={j}>
-     <button key={j} onClick={this.handleClick}>{i.title}</button>
-    </li>)
+    return this.props.sections.map((i, j) =>
+      <li key={j}>
+        <button key={j} onClick={() => this.handleClick(j)}>{i.title}</button>
+        {this.state.open === j && <p>{i.content}</p>}
+      </li>)
   }
-  
-  handleClick = () => {
-    
+
+  handleClick = (inx) => {
+    this.setState(
+      {
+        open:inx
+      }
+    )
   }
 
   componentWillUnmount() { }

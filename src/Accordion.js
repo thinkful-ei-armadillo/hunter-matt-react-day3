@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 
 class Accordion extends Component {
 
-  constructor(props) {
-    super(props)
-  }
   state = {
     open: null
   }
